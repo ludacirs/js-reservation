@@ -1,0 +1,14 @@
+{
+  "name": "js-reservation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.0.1",
+    "prettier": "^2.5.0",
+    "sass": "^1.44.0"
+  },
+  "scripts": {
+    "start": "parcel ./src/index.html"
+  }
+}
