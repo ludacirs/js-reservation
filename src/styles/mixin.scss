@@ -1,0 +1,13 @@
+@use 'Constant';
+
+@mixin flex-box($direction: '', $justify: '', $align: ''){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin card-style(){
+  border-radius: 15px;
+  background: Constant.$white;
+}

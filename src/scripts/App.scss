@@ -1,0 +1,6 @@
+@use '/src/styles/mixin';
+
+#app{
+  @include mixin.flex-box(row, center, center);
+  width: 100vw;
+}
