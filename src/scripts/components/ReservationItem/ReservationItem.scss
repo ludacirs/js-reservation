@@ -1,0 +1,38 @@
+@use '/src/styles/mixin';
+@use '/src/styles/Constant';
+
+.reservation-item-container{
+  @include mixin.card-style();
+  @include mixin.flex-box(row, space-around, center);
+  height: 100px;
+  padding-right: 12px;
+  margin: 5px;
+  .left-section{
+    text-align: center;
+    width: 15%;
+    > * {
+      margin: 5px 0;
+    }
+  }
+  .middle-section{
+    width: 50%;
+    > * {
+      margin: 5px 0;
+    }
+    .menu-info{
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  .right-section{
+    width: 10%;
+    button{
+      color: Constant.$white;
+      background: Constant.$primary;
+      width: 65px;
+      height: 30px;
+      border-radius: 5px;
+    }
+  }
+}

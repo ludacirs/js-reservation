@@ -1,0 +1,9 @@
+@use '/src/styles/mixin';
+
+.reservation-info-container {
+  @include mixin.card-style();
+  @include mixin.flex-box(column, center, center);
+  width: 400px;
+  height: 500px;
+  min-width: 400px;
+}

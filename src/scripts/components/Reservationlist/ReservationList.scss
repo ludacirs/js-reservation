@@ -1,0 +1,14 @@
+.reservation-list{
+  width: 60%;
+  height: 400px;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 8px;
+
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+}
