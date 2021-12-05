@@ -3,4 +3,5 @@
 #app{
   @include mixin.flex-box(row, center, center);
   width: 100vw;
+  height: 100vw;
 }

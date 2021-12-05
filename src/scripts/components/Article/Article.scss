@@ -1,0 +1,6 @@
+@use '/src/styles/mixin';
+
+.article{
+  @include mixin.flex-box(row, center, flex-start);
+  width: 100%;
+}
