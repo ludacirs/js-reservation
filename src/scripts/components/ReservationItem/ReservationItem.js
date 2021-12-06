@@ -1,15 +1,7 @@
 import "./ReservationItem.scss";
 import Component from "../../core/Component";
 import { formatTime } from "../../utils/format";
-
-const RESERVATION_STATUS = {
-  seated: "예약",
-  reserved: "착석 중",
-};
-const RESERVATION_BUTTON = {
-  seated: "착석",
-  reserved: "퇴석",
-};
+import { RESERVATION_BUTTON, RESERVATION_STATUS } from "../../utils/Constant";
 
 class ReservationItem extends Component {
   setup(className, tag = "div") {
