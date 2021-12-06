@@ -6,8 +6,8 @@ import { RESERVATION_BUTTON, RESERVATION_STATUS } from "../../utils/Constant";
 class ReservationItem extends Component {
   setup(className, tag = "div") {
     super.setup("reservation-item-container", "li");
-    const { id } = this.props.reservation;
-    this.$elem.dataset.id = id;
+    const { index } = this.props;
+    this.$elem.dataset.index = index;
   }
 
   template() {

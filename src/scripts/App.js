@@ -9,7 +9,6 @@ class App {
   $target;
   state = {
     reservations: null,
-    currentInfo: null,
   };
 
   constructor(target) {
@@ -19,12 +18,17 @@ class App {
 
   async init() {
     await this.initState();
-    const { currentInfo, reservations } = this.state;
+    const { reservations } = this.state;
 
     const article = new Article(this.$target);
 
-    new ReservationList(article.$elem, { reservations });
-    new ReservationInfo(article.$elem, { currentInfo });
+    new ReservationList(article.$elem, {
+      reservations,
+      onClickReservation: this.onClickReservation.bind(this),
+    });
+    this.reservationInfoC = new ReservationInfo(article.$elem, {
+      initReservation: reservations[0],
+    });
   }
 
   async initState() {
@@ -35,6 +39,16 @@ class App {
     );
 
     this.state.currentInfo = this.state.reservations[0];
+  }
+
+  onClickReservation(event) {
+    const target = event.target.closest(".reservation-item-container");
+    if (!target) {
+      return;
+    }
+    this.reservationInfoC.setState({
+      currentInfo: this.state.reservations[+target.dataset.index],
+    });
   }
 }
 

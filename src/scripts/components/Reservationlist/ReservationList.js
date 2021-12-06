@@ -10,9 +10,14 @@ class ReservationList extends Component {
 
   mounted() {
     const { reservations } = this.props;
-    reservations.map((reservation) => {
-      new ReservationItem(this.$elem, { reservation });
+    reservations.map((reservation, index) => {
+      new ReservationItem(this.$elem, { reservation, index });
     });
+  }
+
+  setEvent() {
+    const { onClickReservation } = this.props;
+    this.addEvent("click", onClickReservation);
   }
 }
 
