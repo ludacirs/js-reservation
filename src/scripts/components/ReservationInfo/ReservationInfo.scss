@@ -2,8 +2,40 @@
 
 .reservation-info-container {
   @include mixin.card-style();
-  @include mixin.flex-box(column, center, center);
+  @include mixin.flex-box(column, space-evenly, center);
   width: 400px;
   height: 500px;
   min-width: 400px;
+  padding: 30px;
+
+  .header{
+    font-size: 24px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .key{
+    color: darkgray;
+    margin-right: 50px;
+    width: 60px;
+    display: inline-block;
+  }
+  .reservation-info-list{
+    height: 130px;
+    width: 100%;
+    @include mixin.flex-box(column, space-between, flex-start);
+  }
+  .customer-info-list{
+    height: 200px;
+    width: 100%;
+    @include mixin.flex-box(column, space-between, flex-start);
+    .memo{
+      width: 80px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+  }
+  .request-info{
+    width: 100%;
+    @include mixin.flex-box(column, space-between, flex-start);
+  }
 }
