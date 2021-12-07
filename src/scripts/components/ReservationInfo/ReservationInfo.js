@@ -14,13 +14,14 @@ class ReservationInfo extends Component {
   template() {
     const { status, timeReserved, timeRegistered, customer } =
       this.state.currentInfo;
-    console.log(this.state.currentInfo);
 
     return `
     <div class="header">예약 정보</div>
-    <ul class="reservation-info-list">
+    <ul class="info-list reservation">
       <li class="status">
-        <span class="key">예약 상태</span> <span>${RESERVATION_STATUS[status]}</span>
+        <span class="key">예약 상태</span> <span>${
+          RESERVATION_STATUS[status]
+        }</span>
       </li>
       <li class="reservation-time">
       <span class="key">예약 시간</span> <span>${timeReserved}</span>
@@ -30,19 +31,25 @@ class ReservationInfo extends Component {
 </li>
     </ul>
     <div class="header">고객 정보</div>
-    <ul class="customer-info-list">
+    <ul class="info-list customer">
         <li class="user-name">
         <span class="key">고객 성명</span> <span>${customer.name}</span>
 </li>
         <li class="user-rank">
-        <span class="key">고객 등급</span> <span>${customer.level}</span>
+        <span class="key">고객 등급</span> <span>${
+          customer.level.length ? customer.level : "-"
+        }</span>
 </li>
         <li class="user-memo">
-        <div class="key">고객 메모</div> <div class="memo">${customer.memo}</div>
+        <span class="key">고객 메모</span> <span class="memo">${
+          customer.memo
+        }</span>
 </li>
     </ul>
-    <ul class="request-info">
+    <ul class="info-list request">
+        <li class="request-memo">
         <span class="key">요청사항</span> <span>${customer.request}</span>
+        </li class="user-memo">
     </ul>
     `;
   }
