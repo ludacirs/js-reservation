@@ -6,8 +6,9 @@ import { RESERVATION_BUTTON, RESERVATION_STATUS } from "../../utils/Constant";
 class ReservationItem extends Component {
   setup(className, tag = "div") {
     super.setup("reservation-item-container", "li");
-    const { index } = this.props;
+    const { index, reservation } = this.props;
     this.$elem.dataset.index = index;
+    this.$elem.dataset.id = reservation.id;
   }
 
   template() {
@@ -25,11 +26,11 @@ class ReservationItem extends Component {
       customer.child
     }</div>
      <div class="menu-info">${menus.map(
-       (menu) => ` ${menu.name}(${menu.qty})`
+       (menu) => ` ${menu.name}(${menu.qty}) `
      )}</div>
     </div>
    <div class="right-section">
-     <button>${RESERVATION_BUTTON[status]}</button>
+     <button class="button ${status}">${RESERVATION_BUTTON[status]}</button>
   </div>`;
   }
 

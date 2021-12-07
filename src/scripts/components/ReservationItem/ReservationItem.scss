@@ -27,12 +27,17 @@
   }
   .right-section{
     width: 10%;
-    button{
+    .button{
       color: Constant.$white;
       background: Constant.$primary;
       width: 65px;
       height: 30px;
       border-radius: 5px;
+      &.reserved{
+        border: 1px solid black;
+        color: black;
+        background: none;
+      }
     }
   }
 }

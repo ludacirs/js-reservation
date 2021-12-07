@@ -1,14 +1,15 @@
 import "./App.scss";
 import ReservationList from "./components/Reservationlist/ReservationList";
 import reservations from "/src/mock/reservations.json";
-import { STATUS } from "./utils/Constant";
 import ReservationInfo from "./components/ReservationInfo/ReservationInfo";
 import Article from "./components/Article/Article";
+import { STATUS } from "./utils/Constant";
 
 class App {
   $target;
   state = {
     reservations: null,
+    currentReservationId: null,
   };
 
   constructor(target) {
@@ -22,9 +23,9 @@ class App {
 
     const article = new Article(this.$target);
 
-    new ReservationList(article.$elem, {
+    this.reservationListC = new ReservationList(article.$elem, {
       reservations,
-      onClickReservation: this.onClickReservation.bind(this),
+      onReservationListClick: this.onReservationListClick.bind(this),
     });
     this.reservationInfoC = new ReservationInfo(article.$elem, {
       initReservation: reservations[0],
@@ -34,21 +35,58 @@ class App {
   async initState() {
     const { reservations: items } = reservations;
 
-    this.state.reservations = items.filter(
-      (item) => item.status !== STATUS.DONE
-    );
+    this.state.reservations = items;
 
-    this.state.currentInfo = this.state.reservations[0];
+    this.state.currentReservationId = items[0].id;
   }
 
-  onClickReservation(event) {
-    const target = event.target.closest(".reservation-item-container");
+  onReservationListClick(event) {
+    const target =
+      event.target.closest(".button") ||
+      event.target.closest(".reservation-item-container");
+
     if (!target) {
       return;
     }
-    this.reservationInfoC.setState({
-      currentInfo: this.state.reservations[+target.dataset.index],
-    });
+    if (target.classList.contains("button")) {
+      const clickedId = target.closest(".reservation-item-container").dataset
+        .id;
+
+      this.state.reservations = this.state.reservations.map((reservation) =>
+        reservation.id === clickedId
+          ? reservation.status === "reserved"
+            ? { ...reservation, status: "done" }
+            : { ...reservation, status: "reserved" }
+          : reservation
+      );
+
+      const changedTarget = this.state.reservations.find(
+        (reservation) => reservation.id === this.state.currentReservationId
+      );
+
+      if (changedTarget.status === STATUS.DONE) {
+        this.reservationInfoC.setState({
+          currentInfo: this.state.reservations.find(
+            (reservation) => reservation.status !== STATUS.DONE
+          ),
+        });
+      }
+
+      this.reservationListC.setState({
+        reservations: this.state.reservations,
+      });
+
+      return;
+    }
+    if (target.classList.contains("reservation-item-container")) {
+      this.state.currentReservationId = target.dataset.id;
+
+      this.reservationInfoC.setState({
+        currentInfo: this.state.reservations.find(
+          (reservation) => reservation.id === this.state.currentReservationId
+        ),
+      });
+    }
   }
 }
 
