@@ -1,6 +1,5 @@
 import "./App.scss";
 import ReservationList from "./components/Reservationlist/ReservationList";
-import reservations from "/src/mock/reservations.json";
 import ReservationInfo from "./components/ReservationInfo/ReservationInfo";
 import Article from "./components/Article/Article";
 import { BOUNDARY_WIDTH, STATUS } from "./utils/Constant";
@@ -39,12 +38,15 @@ class App {
   }
 
   async initState() {
-    const { reservations: items } = reservations;
+    const response = await fetch(
+      "http://3.35.25.199/v1/store/9533/reservations"
+    );
+    const { reservations } = await response.json();
 
-    this.state.reservations = items;
+    this.state.reservations = reservations;
 
-    this.state.currentReservationId = items[0].id;
-    this.state.currentInfo = items[0];
+    this.state.currentReservationId = reservations[0].id;
+    this.state.currentInfo = reservations[0];
 
     this.state.isMobile = window.outerWidth < BOUNDARY_WIDTH;
   }
