@@ -14,6 +14,13 @@ class ReservationInfo extends Component {
   }
 
   template() {
+    if (!this.state.currentInfo) {
+      return `
+      <div class="reservation-info-container">
+        예약건이 없습니다.
+      </div>
+      `;
+    }
     const { status, timeReserved, timeRegistered, customer } =
       this.state.currentInfo;
     const { isMobile } = this.state;
