@@ -21,7 +21,12 @@ class App {
 
   async init() {
     await this.initState();
-    const { reservations } = this.state;
+    const { reservations, error } = this.state;
+
+    if (error) {
+      this.$target.innerHTML = `<div>데이터를 받아오지 못했습니다.</div>`;
+      return;
+    }
 
     const article = new Article(this.$target);
 
@@ -38,17 +43,20 @@ class App {
   }
 
   async initState() {
-    const response = await fetch(
-      "http://3.35.25.199/v1/store/9533/reservations"
-    );
-    const { reservations } = await response.json();
+    try {
+      const response = await fetch(
+        "http://3.35.25.199/v1/store/9533/reservations"
+      );
+      const { reservations } = await response.json();
+      this.state.reservations = reservations;
 
-    this.state.reservations = reservations;
+      this.state.currentReservationId = reservations[0].id;
+      this.state.currentInfo = reservations[0];
 
-    this.state.currentReservationId = reservations[0].id;
-    this.state.currentInfo = reservations[0];
-
-    this.state.isMobile = window.outerWidth < BOUNDARY_WIDTH;
+      this.state.isMobile = window.outerWidth < BOUNDARY_WIDTH;
+    } catch (e) {
+      this.state.error = true;
+    }
   }
 
   onReservationInfoClick(event) {
