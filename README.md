@@ -7,6 +7,9 @@
 yarn install
 yarn start
 ```
+후
+
+http://localhost:1234 접속
 
 # 사용한 것
 
