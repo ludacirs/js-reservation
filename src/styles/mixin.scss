@@ -11,3 +11,14 @@
   border-radius: 15px;
   background: Constant.$white;
 }
+
+@mixin desktop{
+  @media (min-width: Constant.$desktop){
+    @content;
+  }
+}
+@mixin mobile{
+  @media (max-width: Constant.$desktop){
+    @content;
+  }
+}

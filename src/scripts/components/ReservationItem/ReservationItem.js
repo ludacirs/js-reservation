@@ -33,7 +33,5 @@ class ReservationItem extends Component {
      <button class="button ${status}">${RESERVATION_BUTTON[status]}</button>
   </div>`;
   }
-
-  setEvent() {}
 }
 export default ReservationItem;

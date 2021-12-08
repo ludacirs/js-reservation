@@ -1,8 +1,14 @@
 @use '/src/styles/mixin';
 
-#app{
+#app {
   @include mixin.flex-box(row, center, center);
   width: 100%;
   height: 100%;
   padding: 0 8px;
+  @include mixin.mobile {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
 }

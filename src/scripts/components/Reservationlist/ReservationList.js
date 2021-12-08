@@ -17,7 +17,6 @@ class ReservationList extends Component {
     const reservations = this.state.reservations.filter(
       (item) => item.status !== STATUS.DONE
     );
-    console.log(reservations);
     reservations.map((reservation, index) => {
       new ReservationItem(this.$elem, { reservation, index });
     });

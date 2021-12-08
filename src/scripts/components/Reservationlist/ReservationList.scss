@@ -1,4 +1,7 @@
+@use '/src/styles/mixin';
+
 .reservation-list{
+  @include mixin.flex-box(column, flex-start, center);
   width: 50%;
   height: 400px;
   padding: 8px;
@@ -11,4 +14,7 @@
     display: none;
   }
 
+  @include mixin.mobile {
+    width: 100%;
+  }
 }

@@ -13,3 +13,5 @@ export const RESERVATION_BUTTON = {
   seated: "착석",
   reserved: "퇴석",
 };
+
+export const BOUNDARY_WIDTH = 1024;

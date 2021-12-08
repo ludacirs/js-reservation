@@ -1,4 +1,5 @@
 @use 'Constant';
+@use 'mixin';
 
 body{
   background: Constant.$background;
@@ -8,4 +9,16 @@ body{
 
 button:hover{
   cursor: pointer;
+}
+*{
+  box-sizing: border-box;
+  @include mixin.mobile{
+    overflow: hidden;
+  }
+}
+
+.title{
+  font-size: 48px;
+  text-align: center;
+  margin: 20px 0 0 0;
 }
