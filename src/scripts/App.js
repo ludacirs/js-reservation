@@ -102,10 +102,11 @@ class App {
     );
 
     if (changedTarget.status === STATUS.DONE) {
+      this.state.currentInfo = this.state.reservations.find(
+        (reservation) => reservation.status !== STATUS.DONE
+      );
       this.reservationInfoC.setState({
-        currentInfo: this.state.reservations.find(
-          (reservation) => reservation.status !== STATUS.DONE
-        ),
+        currentInfo: this.state.currentInfo,
       });
     }
 
