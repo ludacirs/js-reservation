@@ -16,24 +16,29 @@
       @include mixin.flex-box(column, space-evenly, flex-start);
       height: 200px;
       width: 100%;
+
+      li{
+        padding-top: 2px;
+      }
       .key{
         margin-right: 50px;
         color: darkgray;
       }
+      .user-name{
+        width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
       .user-memo{
-        padding-top: 2px;
         height: 47px;
         overflow: hidden;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
       }
-      .customer-name{
-
-      }
       &.request{
         height: 47px;
-        padding-top: 2px;
         overflow: hidden;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -75,6 +80,12 @@
         .key {
           margin-right: 50px;
           color: darkgray;
+        }
+        .user-name{
+          width: 100%;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
         }
 
         .user-memo {

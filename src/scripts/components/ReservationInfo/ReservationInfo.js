@@ -38,9 +38,7 @@ class ReservationInfo extends Component {
     <div class="header">고객 정보</div>
     <ul class="info-list customer">
         <li class="user-name">
-            <span class="key">고객 성명</span> <span class="customer-name">${
-              customer.name
-            }</span>
+            <span class="key">고객 성명</span> <span>${customer.name}</span>
         </li>
         <li class="user-rank">
           <span class="key">고객 등급</span> <span>${
